@@ -1,0 +1,1 @@
+//npm init -y creates a package.json file with default values
