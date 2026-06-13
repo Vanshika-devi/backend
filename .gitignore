@@ -1,6 +1,8 @@
 /node_modules
-/constent
 /node-express-course
 /.vscode
 /.idea  
 /.DS_Store
+The -D or --save-dev flag is used to install a package as a development dependency. This means that the package is only needed during the development phase and is not required for the production environment. Development dependencies are typically used for tools such as testing frameworks, build tools, and linters that are necessary for development but not for running the application in production.
+The -P or --save-prod flag is used to install a package as a production dependency.
+This means that the package is required for the application to run in a production environment. Production dependencies are typically used for libraries and frameworks that are necessary for the application to function properly in production.

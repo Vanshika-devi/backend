@@ -16,8 +16,17 @@ return new Promise((resolve,reject)=>{
 getdata("./constent/first.txt").then((result)=>{
   console.log(result);
   return getdata("./constent/sunfolder/text.txt");
-  }).then(result=>{
-    console.log(result);
-  }).catch((error)=>{
-  console.log(error);
-})
+  }).then((result1)=>{
+    console.log(result1);
+  }).catch(error=>{
+    console.log(error);
+  })
+  
+//   getdata("./constent/first.txt").then((result)=>{
+//   console.log(result);
+//   return getdata("./constent/sunfolder/text.txt");
+//   }).then(result=>{
+//     console.log(result);
+//   }).catch((error)=>{
+//   console.log(error);
+// })
