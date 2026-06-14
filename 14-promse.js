@@ -1,4 +1,3 @@
-const { error } = require('console');
 const {readFile} = require('fs');
 //promse
 const getdata=(path)=>{
