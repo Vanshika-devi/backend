@@ -1,0 +1,12 @@
+### Cost Optimization and Scalability Analysis
+
+The proposed architecture uses Deepgram Nova-3 for Speech-to-Text, GPT-4o mini for language understanding and response generation, and Google Neural2 for Text-to-Speech synthesis. 
+This approach follows a pay-as-you-go pricing model and is highly suitable for low- to medium-scale deployments because it eliminates the need for managing dedicated infrastructure.
+For workloads below approximately 10,000 conversations per month, managed cloud APIs are generally more cost-effective and operationally simpler.
+Organizations only pay for actual usage while benefiting from automatic scaling, high availability, and reduced maintenance overhead.
+
+As user traffic grows significantly beyond 10,000 conversations per month,
+the cumulative API costs may become substantial. At that scale, self-hosted solutions such as Whisper for Speech-to-Text and Piper for Text-to-Speech, deployed on cloud platforms such as AWS or Azure, can become economically attractive. 
+Although self-hosting introduces additional responsibilities including GPU provisioning, infrastructure management, monitoring, scaling, and maintenance, the per-conversation cost can decrease when serving large volumes of requests.
+Therefore, the managed API architecture is recommended for MVPs, prototypes, and moderate-scale production deployments, 
+while self-hosted alternatives should be considered for high-volume deployments where infrastructure costs can be distributed across a large number of users.

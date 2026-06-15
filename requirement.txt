@@ -1,0 +1,53 @@
+1. Deepgram Nova-3 (Speech-to-Text)
+Deepgram charges strictly per minute of live audio streamed over your API connection. 
+Official Price: $0.0077 per minute  INR Conversion: ₹0.73 per minute
+Cost for ONE 3-Minute Conversation: ₹2.19
+
+2. Groq (Whisper Large v3 Turbo)(Speech to text)
+Groq charges strictly per hour of transcribed audio, utilizing specialized LPU (Language Processing Unit) chips to deliver near-instantaneous processing speeds. 
+Official Price: $0.04 per hour of audio  INR Conversion: ₹0.063 per minute (using 1 USD = ₹95)
+Cost for ONE 3-Minute Conversation: ₹0.19 (19 paise)
+
+Limitations of Groq Whisper:
+
+a. No Live Audio Streaming:-At the time of evaluation, Groq Whisper is primarily positioned as a batch transcription service and provides fewer mature real-time streaming and telephony-focused capabilities compared to Deepgram.
+This means you cannot stream audio chunk-by-chunk while a user is actively speaking.
+The user has to finish their entire sentence, your app must wait for the audio file to stop recording, package it into a .mp3 or .wav file, upload the file to Groq, and wait for the transcription to return.
+
+Deepgram Advantage: Supports continuous WebSocket-based streaming and can transcribe speech incrementally while the user is speaking, reducing conversational latency.
+Groq Whisper is optimized primarily for fast transcription rather than telephony-focused real-time streaming. 
+While it can achieve very low latency, providers such as Deepgram offer more mature streaming infrastructure, telephony integrations, speaker diarization, and production voice-agent tooling.
+
+b. Potential rate limits depending on the selected plan and usage volume.
+c. Limited Speaker Diarization Support (Identifying who spoke when)
+d. Audio File Size Limitations – Larger audio files may require chunking or preprocessing before transcription.
+
+
+3. GPT-4o mini (The Core LLM Brain)
+OpenAI charges per "token" (roughly pieces of words).
+A typical 3-minute back-and-forth conversation accumulates roughly 1,000 text tokens total between user questions and bot answers.  
+Official Price: $0.15/1M input tokens & $0.60/1M output tokens  INR Conversion: A fraction of a paisa per single message.
+Cost for ONE 3-Minute Conversation: ~₹0.01–₹0.05 depending on conversation length and token usage. (Extremely cheap)
+
+4. Google Cloud TTS - Neural2 (Text-to-Speech)
+Google charges based on the number of characters the bot speaks. In a 3-minute chat, the bot usually speaks around 1,500 characters of text.  Official Price: $16.00 per 1 Million characters (if you cross the free limit).  INR Conversion: ₹1.52 per 1,000 characters
+Cost for ONE 3-Minute Conversation:~₹0.02–₹0.03
+If you want to absolutely make sure you don't get a surprise charge on your card, 
+you can set up a GCP Budget Alert inside your Google Cloud Console.
+ You can configure it to send an automatic email alert to your inbox the exact moment your monthly bill hits even ₹50 or ₹100!
+
+
+
+Using GPT-4o Mini, Deepgram Nova-3, and Google Cloud TTS, a typical 3-minute customer conversation costs approximately ₹2.25.
+At 500 conversations per month, the estimated AI cost would be around ₹1,100–₹1,150 per month, with Speech-to-Text being the primary expense.
+
+
+Using GPT-4o Mini, Groq Whisper Large v3 Turbo, and Google Cloud TTS, a typical 3-minute customer conversation costs approximately ₹0.24.
+At 500 conversations per month, the estimated AI cost is expected to be approximately ₹120–₹200 per month, depending on conversation length and token usage.
+At 1000 conversations per month, the estimated AI cost is expected to be approximately ₹250–₹400 per month, depending on conversation length and token usage.
+
+The Speech-to-Text component will be implemented behind a provider abstraction layer.
+ This allows us to start with Groq Whisper for cost efficiency and later switch to Deepgram or another provider with minimal code changes. Since both providers expose Python SDKs and API-based interfaces, the migration effort would be relatively small and isolated to the STT service layer.
+
+We can start with Groq Whisper for cost efficiency and implement the STT layer behind a provider abstraction.
+This keeps monthly AI costs low while allowing migration to Deepgram later if real-time streaming or telephony features become necessary.
